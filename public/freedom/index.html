@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freedom · mirage.faith</title>
+  <meta name="description" content="Freedom — a 12-week small group journey. Sundays at 4:00 PM, Room K3. Childcare provided.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #64b1bc;
+      --teal-deep: #144049;
+      --teal-ink: #0d2b31;
+      --paper: #f7f5f0;
+      --ink: #1d2a2d;
+      --card: #ffffff;
+      --muted: #5e7176;
+      --gold: #c9a86a;
+    }
+    * { margin: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--paper); color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    .serif { font-family: Fraunces, Georgia, serif; }
+
+    /* ---------- hero ---------- */
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(90rem 50rem at 85% -20%, rgba(100,177,188,.35), transparent 60%),
+        radial-gradient(60rem 40rem at -10% 110%, rgba(100,177,188,.22), transparent 55%),
+        linear-gradient(165deg, var(--teal-ink), var(--teal-deep) 55%, #1d5560);
+      color: #f2f7f7;
+      padding: clamp(4rem, 10vh, 7rem) 1.5rem clamp(9rem, 16vh, 12rem);
+      text-align: center;
+    }
+    .hero .kicker {
+      font-size: .8rem; letter-spacing: .34em; text-transform: uppercase;
+      color: var(--teal); font-weight: 600;
+    }
+    .hero h1 {
+      font-family: Fraunces, Georgia, serif; font-weight: 300;
+      font-size: clamp(4rem, 16vw, 9.5rem); line-height: .95;
+      letter-spacing: .02em; margin: 1.2rem 0 1.4rem;
+    }
+    .hero .sub {
+      font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300;
+      font-size: clamp(1.15rem, 3vw, 1.6rem); color: #cfe2e5; max-width: 34ch; margin: 0 auto;
+    }
+    .hero .verse {
+      margin-top: 1.6rem; font-size: .85rem; letter-spacing: .06em; color: #9dbcc2;
+    }
+    /* soft horizon line */
+    .hero::after {
+      content: ""; position: absolute; inset: auto 0 0;
+      height: 6rem; background: linear-gradient(transparent, rgba(247,245,240,.12));
+    }
+
+    /* ---------- floating logistics card ---------- */
+    .meta-wrap { padding: 0 1.5rem; }
+    .meta {
+      max-width: 52rem; margin: -6.5rem auto 0; position: relative;
+      background: var(--card); border-radius: 1.1rem;
+      box-shadow: 0 24px 70px -24px rgba(13,43,49,.45);
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+      overflow: hidden;
+    }
+    .meta > div { padding: 1.5rem 1.3rem; border-left: 1px solid #eee9df; }
+    .meta > div:first-child { border-left: 0; }
+    .meta .label {
+      font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600; margin-bottom: .45rem;
+    }
+    .meta .value { font-family: Fraunces, Georgia, serif; font-size: 1.25rem; color: var(--teal-ink); }
+
+    /* ---------- sections ---------- */
+    section { max-width: 52rem; margin: 0 auto; padding: 4.5rem 1.5rem 0; }
+    .eyebrow {
+      font-size: .74rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--teal); font-weight: 600; margin-bottom: 1rem;
+    }
+    h2 { font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 2rem; color: var(--teal-ink); }
+    .prose { margin-top: 1rem; line-height: 1.75; color: #3c4d51; max-width: 60ch; }
+
+    /* this week card */
+    .now {
+      margin-top: 1.6rem; background: linear-gradient(135deg, var(--teal-deep), #226672);
+      color: #eef6f7; border-radius: 1.1rem; padding: 2rem 2.2rem;
+      display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between;
+    }
+    .now .big { font-family: Fraunces, Georgia, serif; font-size: 1.9rem; }
+    .now .when { color: #a8cdd3; font-size: .95rem; margin-top: .35rem; }
+    .now .badge {
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25);
+      padding: .55rem 1.1rem; border-radius: 2rem; font-size: .85rem; letter-spacing: .04em;
+    }
+
+    /* timeline */
+    .weeks { margin-top: 2.2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(3.4rem, 1fr)); gap: .55rem; }
+    .wk {
+      aspect-ratio: 1; border-radius: .8rem; display: grid; place-items: center;
+      font-family: Fraunces, Georgia, serif; font-size: 1.05rem;
+      background: #ece7db; color: #8b8474; position: relative;
+    }
+    .wk.done { background: var(--teal); color: #fff; }
+    .wk.current {
+      background: var(--teal-ink); color: #fff;
+      box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--teal);
+    }
+    .wk.conf { background: var(--gold); color: #3d3012; font-size: .7rem; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; font-family: Inter, sans-serif; }
+    .legend { margin-top: .8rem; font-size: .8rem; color: var(--muted); }
+
+    /* themes */
+    .themes { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+    .theme {
+      border: 1px solid #d8d2c4; border-radius: 2rem; padding: .5rem 1.1rem;
+      font-size: .88rem; color: #46585c; background: #fbfaf7;
+    }
+
+    /* conference */
+    .conf-banner {
+      margin-top: 4.5rem; border-radius: 1.2rem; overflow: hidden;
+      background:
+        radial-gradient(40rem 20rem at 110% 10%, rgba(201,168,106,.35), transparent 60%),
+        linear-gradient(150deg, #241d0e, #4a3a1c);
+      color: #f4ecdc; padding: 2.6rem 2.4rem; text-align: center;
+    }
+    .conf-banner .eyebrow { color: var(--gold); }
+    .conf-banner .big { font-family: Fraunces, Georgia, serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 300; }
+    .conf-banner p { margin-top: .8rem; color: #d9cba9; }
+
+    /* footer */
+    footer { margin-top: 5rem; padding: 3rem 1.5rem 3.5rem; text-align: center; border-top: 1px solid #e6e0d3; }
+    footer .mark { font-family: Fraunces, Georgia, serif; letter-spacing: .3em; font-size: 1.05rem; color: var(--teal-ink); }
+    footer .expand { margin-top: .5rem; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    footer .hosts { margin-top: 1.2rem; font-size: .9rem; color: #4a5c60; }
+    footer a { color: inherit; }
+
+    /* entrance motion */
+    @media (prefers-reduced-motion: no-preference) {
+      .rise { opacity: 0; transform: translateY(14px); animation: rise .8s ease forwards; }
+      .rise.d1 { animation-delay: .1s } .rise.d2 { animation-delay: .22s } .rise.d3 { animation-delay: .34s }
+      @keyframes rise { to { opacity: 1; transform: none } }
+    }
+    @media (max-width: 540px) {
+      .meta { grid-template-columns: 1fr 1fr; }
+      .meta > div:nth-child(odd) { border-left: 0; }
+      .meta > div { border-top: 1px solid #eee9df; }
+      .meta > div:nth-child(-n+2) { border-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="kicker rise">A small group journey</div>
+    <h1 class="rise d1">Freedom</h1>
+    <p class="sub rise d2">Twelve weeks walking out of what holds you back — and into the life you were made for.</p>
+    <div class="verse rise d3">"It is for freedom that Christ has set us free." — Galatians 5:1</div>
+  </header>
+
+  <div class="meta-wrap">
+    <div class="meta rise d3" id="meta">
+      <div><div class="label">When</div><div class="value" id="m-when">Sundays · 4:00 PM</div></div>
+      <div><div class="label">Where</div><div class="value" id="m-where">Room K3</div></div>
+      <div><div class="label">Families</div><div class="value" id="m-care">Childcare provided</div></div>
+      <div><div class="label">Led by</div><div class="value" id="m-hosts">Kevin &amp; Bethany</div></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="eyebrow">This week</div>
+    <div class="now" id="now">
+      <div>
+        <div class="big" id="now-title">Loading…</div>
+        <div class="when" id="now-when"></div>
+      </div>
+      <div class="badge" id="now-badge"></div>
+    </div>
+    <div class="weeks" id="weeks" aria-label="12 week journey"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">The territory</div>
+    <h2>What we'll walk through together</h2>
+    <p class="prose">Freedom isn't a class — it's a guided journey through the places where everyone gets stuck. Along the way, the curriculum opens up themes like these:</p>
+    <div class="themes" id="themes"></div>
+  </section>
+
+  <section>
+    <div class="conf-banner" id="conf">
+      <div class="eyebrow">Where it all leads</div>
+      <div class="big" id="conf-name">Freedom Conference</div>
+      <p id="conf-note"></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="mark">M I R A G E</div>
+    <div class="expand">Marriage Is Real And Growing Everyday</div>
+    <div class="hosts">A ministry of <a href="/">mirage.faith</a> · led by Kevin &amp; Bethany Gorham</div>
+  </footer>
+
+  <script>
+    (async () => {
+      const s = await fetch("/freedom/schedule.json").then(r => r.json()).catch(() => null);
+      if (!s) return;
+      // meta
+      document.getElementById("m-when").textContent = `${s.dayOfWeek}s · ${s.time}`;
+      document.getElementById("m-where").textContent = s.location;
+      document.getElementById("m-care").textContent = s.childcare;
+      document.getElementById("m-hosts").textContent = s.hosts.replace(" Gorham", "");
+      // date math: sessions are Sundays starting startDate; the page always
+      // previews the NEXT session, so it advances naturally on Monday.
+      const start = new Date(s.startDate + "T12:00:00");
+      const now = new Date();
+      const day = 86400000;
+      let next = new Date(start);
+      while (next.getTime() + 12 * 3600000 < now.getTime()) next = new Date(next.getTime() + 7 * day);
+      const weekN = Math.round((next - start) / (7 * day)) + 1;
+      const fmt = d => d.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+      const title = document.getElementById("now-title");
+      const when = document.getElementById("now-when");
+      const badge = document.getElementById("now-badge");
+      if (weekN > s.totalWeeks) {
+        title.textContent = s.conference.name;
+        when.textContent = s.conference.dateConfirmed ? s.conference.expected : `${s.conference.expected} — date announced soon`;
+        badge.textContent = "The journey culminates";
+      } else {
+        const wk = s.weeks[weekN - 1] || {};
+        title.textContent = wk.topic ? `Week ${weekN} — ${wk.topic}` : `Week ${weekN} of ${s.totalWeeks}`;
+        const days = Math.ceil((next - now) / day);
+        when.textContent = `${fmt(next)} · ${s.time} · ${s.location}` + (weekN === 1 ? " — we begin!" : "");
+        badge.textContent = days <= 0 ? "Today" : days === 1 ? "Tomorrow" : `In ${days} days`;
+      }
+      // timeline
+      const weeksEl = document.getElementById("weeks");
+      s.weeks.forEach(w => {
+        const el = document.createElement("div");
+        el.className = "wk" + (w.n < weekN ? " done" : w.n === weekN ? " current" : "");
+        el.textContent = w.n;
+        if (w.topic) el.title = w.topic;
+        weeksEl.appendChild(el);
+      });
+      const conf = document.createElement("div");
+      conf.className = "wk conf" + (weekN > s.totalWeeks ? " current" : "");
+      conf.textContent = "Conf";
+      conf.title = s.conference.name;
+      weeksEl.appendChild(conf);
+      document.getElementById("legend").textContent =
+        weekN <= s.totalWeeks
+          ? `Week ${weekN} of ${s.totalWeeks} · begins ${fmt(start)} · culminates at the ${s.conference.name}`
+          : `All ${s.totalWeeks} weeks complete`;
+      // themes + conference
+      document.getElementById("themes").innerHTML = s.themes.map(t => `<div class="theme">${t}</div>`).join("");
+      document.getElementById("conf-name").textContent = s.conference.name;
+      document.getElementById("conf-note").textContent =
+        (s.conference.dateConfirmed ? s.conference.expected + ". " : s.conference.expected + " — exact date announced soon. ") + s.conference.note;
+    })();
+  </script>
+</body>
+</html>
