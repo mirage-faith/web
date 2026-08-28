@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monthly Marriage Meetup · mirage.faith</title>
+  <meta name="description" content="Once a month, year-round: workshops, shared meals, and real community for married couples. Whether you've been married 50 years or 15 minutes — you are welcome. Childcare provided.">
+  <meta property="og:title" content="Monthly Marriage Meetup">
+  <meta property="og:description" content="Once a month · Year-round · Childcare provided. A strong marriage doesn't happen by accident.">
+  <meta property="og:url" content="https://mirage.faith/mmm">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#3b2f14">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23144049'/%3E%3Ctext x='32' y='42' font-family='Georgia' font-size='30' fill='%2364b1bc' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #64b1bc; --teal-deep: #144049; --teal-ink: #0d2b31;
+      --paper: #f7f5f0; --ink: #1d2a2d; --card: #ffffff;
+      --muted: #5e7176; --gold: #c9a86a; --gold-deep: #3b2f14; --line: #e6e0d3;
+    }
+    * { margin: 0; box-sizing: border-box; }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+    .hero {
+      position: relative; overflow: hidden; text-align: center; color: #f6f0e2;
+      background:
+        radial-gradient(80rem 45rem at 88% -15%, rgba(201,168,106,.4), transparent 60%),
+        radial-gradient(55rem 35rem at -8% 112%, rgba(100,177,188,.25), transparent 55%),
+        linear-gradient(160deg, #26200f, var(--gold-deep) 55%, #574422);
+      padding: clamp(4rem, 10vh, 7rem) 1.5rem clamp(9rem, 15vh, 11rem);
+    }
+    .home {
+      position: absolute; top: 1.2rem; left: 1.4rem; z-index: 2; color: #d9c8a2;
+      text-decoration: none; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+    }
+    .kicker { font-size: .8rem; letter-spacing: .34em; text-transform: uppercase; color: #dcc48f; font-weight: 600; }
+    h1 {
+      font-family: Fraunces, Georgia, serif; font-weight: 300;
+      font-size: clamp(2.6rem, 9.5vw, 5.6rem); line-height: 1.02; margin: 1.2rem auto 1.4rem;
+      max-width: 14ch;
+    }
+    .sub {
+      font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300;
+      font-size: clamp(1.1rem, 3vw, 1.5rem); color: #e6d7b5; max-width: 38ch; margin: 0 auto;
+    }
+    .welcome {
+      display: inline-block; margin-top: 2rem; border: 1px solid rgba(220,196,143,.5);
+      border-radius: 2rem; padding: .7rem 1.5rem; font-size: .92rem; color: #eee2c6;
+    }
+
+    .meta-wrap { padding: 0 1.5rem; }
+    .meta {
+      max-width: 52rem; margin: -6.5rem auto 0; position: relative;
+      background: var(--card); border-radius: 1.1rem;
+      box-shadow: 0 24px 70px -24px rgba(38,32,15,.5);
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr)); overflow: hidden;
+    }
+    .meta > div { padding: 1.5rem 1.3rem; border-left: 1px solid #eee9df; }
+    .meta > div:first-child { border-left: 0; }
+    .meta .label { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: .45rem; }
+    .meta .value { font-family: Fraunces, Georgia, serif; font-size: 1.2rem; color: var(--gold-deep); }
+
+    section { max-width: 52rem; margin: 0 auto; padding: 4.2rem 1.5rem 0; }
+    .eyebrow { font-size: .74rem; letter-spacing: .28em; text-transform: uppercase; color: #a8873f; font-weight: 600; margin-bottom: 1rem; }
+    h2 { font-family: Fraunces, Georgia, serif; font-weight: 400; font-size: 2rem; color: var(--gold-deep); }
+    .prose { margin-top: 1rem; line-height: 1.8; color: #40402f; max-width: 62ch; }
+    .prose + .prose { margin-top: 1.1rem; }
+
+    .dreams { margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+    .dream { border: 1px solid #ddd2b8; border-radius: 2rem; padding: .5rem 1.1rem; font-size: .88rem; color: #55502f; background: #fbf8f0; }
+    .dream.more { border-style: dashed; font-style: italic; color: #8a815d; }
+
+    .cta {
+      margin-top: 4.2rem; border-radius: 1.2rem; text-align: center;
+      background: linear-gradient(150deg, var(--teal-ink), var(--teal-deep) 60%, #1d5560);
+      color: #e8f2f3; padding: 2.6rem 2.2rem;
+    }
+    .cta .big { font-family: Fraunces, Georgia, serif; font-weight: 300; font-size: clamp(1.6rem, 4.5vw, 2.2rem); }
+    .cta p { margin-top: .8rem; color: #b7d6db; }
+    .cta a { color: #d9ecef; font-family: Fraunces, Georgia, serif; font-size: 1.15rem; }
+
+    footer { margin-top: 5rem; padding: 3rem 1.5rem 3.5rem; text-align: center; border-top: 1px solid var(--line); }
+    footer .mark { font-family: Fraunces, Georgia, serif; letter-spacing: .3em; font-size: 1.05rem; color: var(--teal-ink); }
+    footer .expand { margin-top: .5rem; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    footer .hosts { margin-top: 1.2rem; font-size: .9rem; color: #4a5c60; }
+    footer a { color: inherit; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .rise { opacity: 0; transform: translateY(14px); animation: rise .8s ease forwards; }
+      .rise.d1 { animation-delay: .1s } .rise.d2 { animation-delay: .22s } .rise.d3 { animation-delay: .34s }
+      @keyframes rise { to { opacity: 1; transform: none } }
+    }
+    @media (max-width: 540px) {
+      .meta { grid-template-columns: 1fr 1fr; }
+      .meta > div:nth-child(odd) { border-left: 0; }
+      .meta > div { border-top: 1px solid #eee9df; }
+      .meta > div:nth-child(-n+2) { border-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <a class="home" href="/">&larr; mirage.faith</a>
+    <div class="kicker rise">Once a month · Year-round</div>
+    <h1 class="rise d1">Monthly Marriage Meetup</h1>
+    <p class="sub rise d2">A strong marriage doesn't happen by accident — it takes investment.</p>
+    <div class="welcome rise d3">Married 50 years or 15 minutes · a 10 or a 1 — <strong>you are welcome</strong></div>
+  </header>
+
+  <div class="meta-wrap">
+    <div class="meta rise d3">
+      <div><div class="label">When</div><div class="value">Monthly</div></div>
+      <div><div class="label">Rhythm</div><div class="value">Year-round</div></div>
+      <div><div class="label">Families</div><div class="value">Childcare provided</div></div>
+      <div><div class="label">Led by</div><div class="value">Kevin &amp; Bethany</div></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="eyebrow">Why we gather</div>
+    <h2>Iron sharpens iron</h2>
+    <p class="prose">Once a month, clear your calendar and join us. We have a passion for seeing marriages thrive, and we believe a strong marriage doesn't happen by accident: it takes investment. This group exists to help couples grow, get better, and sharpen one another — a place to connect with others walking the same road and be reminded you're not alone.</p>
+    <p class="prose">Our aim: to build a firm foundation of trust, communication, and intimacy <em>before</em> life's inevitable storms hit, and to equip you with tools you didn't know you needed for every season.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">Built together</div>
+    <h2>Marriage doesn't take a semester off</h2>
+    <p class="prose">MMM is unlike our other groups in one big way: we meet year-round. We're starting simple, and as we build momentum, we'll branch out together. Imagine life done in community:</p>
+    <div class="dreams">
+      <div class="dream">Workshops</div>
+      <div class="dream">Game nights</div>
+      <div class="dream">Shared meals</div>
+      <div class="dream">Movie nights</div>
+      <div class="dream">Outings</div>
+      <div class="dream">Friendly competitions</div>
+      <div class="dream">Maybe even a camping trip</div>
+      <div class="dream more">…your idea here</div>
+    </div>
+    <p class="prose" style="margin-top:1.8rem">We're not promising a fixed lineup — we're leaving room to dream, and some of the best ideas may come from you. This isn't just a group you join. <strong>It's one you help build.</strong> So come as you are, and let's grow together.</p>
+  </section>
+
+  <section>
+    <div class="cta">
+      <div class="big">First gathering announced soon</div>
+      <p>Want in on the ground floor? Say hello and we'll make sure you hear first.</p>
+      <p><a href="mailto:hello@mirage.faith">hello@mirage.faith</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="mark">M I R A G E</div>
+    <div class="expand">Marriage Is Real And Growing Everyday</div>
+    <div class="hosts">A ministry of <a href="/">mirage.faith</a> · led by Kevin &amp; Bethany Gorham</div>
+  </footer>
+
+</body>
+</html>
