@@ -8,18 +8,66 @@
   "hosts": "Kevin & Bethany Gorham",
   "totalWeeks": 12,
   "weeks": [
-    { "n": 1, "topic": null, "video": true },
-    { "n": 2, "topic": null, "video": null },
-    { "n": 3, "topic": null, "video": null },
-    { "n": 4, "topic": null, "video": null },
-    { "n": 5, "topic": null, "video": true },
-    { "n": 6, "topic": null, "video": null },
-    { "n": 7, "topic": null, "video": null },
-    { "n": 8, "topic": null, "video": null },
-    { "n": 9, "topic": null, "video": null },
-    { "n": 10, "topic": null, "video": true },
-    { "n": 11, "topic": null, "video": null },
-    { "n": 12, "topic": null, "video": null }
+    {
+      "n": 1,
+      "topic": null,
+      "video": true
+    },
+    {
+      "n": 2,
+      "topic": null,
+      "video": null
+    },
+    {
+      "n": 3,
+      "topic": null,
+      "video": null
+    },
+    {
+      "n": 4,
+      "topic": null,
+      "video": null
+    },
+    {
+      "n": 5,
+      "topic": null,
+      "video": true
+    },
+    {
+      "n": 6,
+      "topic": null,
+      "video": null
+    },
+    {
+      "n": 7,
+      "topic": null,
+      "video": null
+    },
+    {
+      "n": 8,
+      "topic": null,
+      "video": null
+    },
+    {
+      "n": 9,
+      "topic": null,
+      "video": null
+    },
+    {
+      "n": 10,
+      "topic": null,
+      "video": true
+    },
+    {
+      "n": 11,
+      "topic": null,
+      "video": null
+    },
+    {
+      "n": 12,
+      "topic": null,
+      "video": null
+    }
   ],
   "themes": [
     "Overcoming Pride",
@@ -34,6 +82,6 @@
     "name": "Freedom Conference",
     "expected": "Late November 2026",
     "dateConfirmed": false,
-    "note": "Exact date announced soon — the journey culminates here."
+    "note": "Twelve weeks of walking it out, then a gathering to seal it."
   }
 }

@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Freedom · mirage.faith</title>
   <meta name="description" content="Freedom — a 12-week small group journey. Sundays at 4:00 PM, Room K3. Childcare provided.">
+  <meta property="og:title" content="Freedom — a 12-week journey">
+  <meta property="og:description" content="Sundays · 4:00 PM · Room K3 · Childcare provided. Led by Kevin & Bethany.">
+  <meta property="og:url" content="https://mirage.faith/freedom">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#144049">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23144049'/%3E%3Ctext x='32' y='42' font-family='Georgia' font-size='30' fill='%2364b1bc' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -41,7 +47,7 @@
     }
     .hero .kicker {
       font-size: .8rem; letter-spacing: .34em; text-transform: uppercase;
-      color: var(--teal); font-weight: 600;
+      color: #8ccbd4; font-weight: 600;
     }
     .hero h1 {
       font-family: Fraunces, Georgia, serif; font-weight: 300;
@@ -157,7 +163,8 @@
 </head>
 <body>
 
-  <header class="hero">
+  <a href="/" style="position:absolute;top:1.2rem;left:1.4rem;z-index:2;color:#8ccbd4;text-decoration:none;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase">&larr; mirage.faith</a>
+  <header class="hero" style="position:relative">
     <div class="kicker rise">A small group journey</div>
     <h1 class="rise d1">Freedom</h1>
     <p class="sub rise d2">Twelve weeks walking out of what holds you back — and into the life you were made for.</p>
@@ -209,7 +216,7 @@
 
   <script>
     (async () => {
-      const s = await fetch("/freedom/schedule.json").then(r => r.json()).catch(() => null);
+      const s = await fetch("/freedom/schedule.json", { cache: "no-store" }).then(r => r.json()).catch(() => null);
       if (!s) return;
       // meta
       document.getElementById("m-when").textContent = `${s.dayOfWeek}s · ${s.time}`;
@@ -261,7 +268,7 @@
       document.getElementById("themes").innerHTML = s.themes.map(t => `<div class="theme">${t}</div>`).join("");
       document.getElementById("conf-name").textContent = s.conference.name;
       document.getElementById("conf-note").textContent =
-        (s.conference.dateConfirmed ? s.conference.expected + ". " : s.conference.expected + " — exact date announced soon. ") + s.conference.note;
+        (s.conference.dateConfirmed ? s.conference.expected : s.conference.expected + " — exact date announced soon") + ". " + s.conference.note;
     })();
   </script>
 </body>
