@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Freedom · mirage.faith</title>
-  <meta name="description" content="Freedom — a 12-week small group journey. Sundays at 4:00 PM, Room K3. Childcare provided.">
-  <meta property="og:title" content="Freedom — a 12-week journey">
+  <meta name="description" content="Freedom: a 12-week small group journey. Sundays at 4:00 PM, Room K3. Childcare provided.">
+  <meta property="og:title" content="Freedom: a 12-week journey">
   <meta property="og:description" content="Sundays · 4:00 PM · Room K3 · Childcare provided. Led by Kevin & Bethany.">
   <meta property="og:url" content="https://mirage.faith/freedom">
   <meta property="og:type" content="website">
@@ -167,8 +167,8 @@
   <header class="hero" style="position:relative">
     <div class="kicker rise">A small group journey</div>
     <h1 class="rise d1">Freedom</h1>
-    <p class="sub rise d2">Twelve weeks walking out of what holds you back — and into the life you were made for.</p>
-    <div class="verse rise d3">"It is for freedom that Christ has set us free." — Galatians 5:1</div>
+    <p class="sub rise d2">Twelve weeks walking out of what holds you back and into the life you were made for.</p>
+    <div class="verse rise d3">"It is for freedom that Christ has set us free." (Galatians 5:1)</div>
   </header>
 
   <div class="meta-wrap">
@@ -196,7 +196,7 @@
   <section>
     <div class="eyebrow">The territory</div>
     <h2>What we'll walk through together</h2>
-    <p class="prose">Freedom isn't a class — it's a guided journey through the places where everyone gets stuck. Along the way, the curriculum opens up themes like these:</p>
+    <p class="prose">Freedom isn't a class; it's a guided journey through the places where everyone gets stuck. Along the way, the curriculum opens up themes like these:</p>
     <div class="themes" id="themes"></div>
   </section>
 
@@ -211,7 +211,7 @@
   <footer>
     <div class="mark">M I R A G E</div>
     <div class="expand">Marriage Is Real And Growing Everyday</div>
-    <div class="hosts">A ministry of <a href="/">mirage.faith</a> · led by Kevin &amp; Bethany Gorham</div>
+    <div class="hosts">A ministry of <a href="/">mirage.faith</a> · <a href="/mmm">Marriage Meetup</a> · led by Kevin &amp; Bethany Gorham</div>
   </footer>
 
   <script>
@@ -237,13 +237,13 @@
       const badge = document.getElementById("now-badge");
       if (weekN > s.totalWeeks) {
         title.textContent = s.conference.name;
-        when.textContent = s.conference.dateConfirmed ? s.conference.expected : `${s.conference.expected} — date announced soon`;
+        when.textContent = s.conference.dateConfirmed ? s.conference.expected : `${s.conference.expected} (date announced soon)`;
         badge.textContent = "The journey culminates";
       } else {
         const wk = s.weeks[weekN - 1] || {};
-        title.textContent = wk.topic ? `Week ${weekN} — ${wk.topic}` : `Week ${weekN} of ${s.totalWeeks}`;
+        title.textContent = wk.topic ? `Week ${weekN}: ${wk.topic}` : `Week ${weekN} of ${s.totalWeeks}`;
         const days = Math.ceil((next - now) / day);
-        when.textContent = `${fmt(next)} · ${s.time} · ${s.location}` + (weekN === 1 ? " — we begin!" : "");
+        when.textContent = `${fmt(next)} · ${s.time} · ${s.location}` + (weekN === 1 ? " (we begin!)" : "");
         badge.textContent = days <= 0 ? "Today" : days === 1 ? "Tomorrow" : `In ${days} days`;
       }
       // timeline
@@ -268,7 +268,7 @@
       document.getElementById("themes").innerHTML = s.themes.map(t => `<div class="theme">${t}</div>`).join("");
       document.getElementById("conf-name").textContent = s.conference.name;
       document.getElementById("conf-note").textContent =
-        (s.conference.dateConfirmed ? s.conference.expected : s.conference.expected + " — exact date announced soon") + ". " + s.conference.note;
+        (s.conference.dateConfirmed ? s.conference.expected : s.conference.expected + " (exact date announced soon)") + ". " + s.conference.note;
     })();
   </script>
 </body>
