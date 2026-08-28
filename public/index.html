@@ -108,16 +108,27 @@
     .heart .pt .t { font-family: Fraunces, Georgia, serif; font-size: 1.15rem; color: #a9d2d9; }
     .heart .pt p { margin-top: .5rem; font-size: .92rem; line-height: 1.65; color: #c3d9dc; }
 
-    /* ---------- contact / footer ---------- */
-    footer { margin-top: 5rem; padding: 3.2rem 1.5rem 3.6rem; text-align: center; border-top: 1px solid var(--line); }
-    footer .mark { font-family: Fraunces, Georgia, serif; letter-spacing: .3em; color: var(--teal-ink); }
-    footer .who { margin-top: .9rem; font-size: .92rem; color: #4a5c60; }
-    footer .mail { margin-top: 1.1rem; }
-    footer .mail a {
-      font-family: Fraunces, Georgia, serif; font-size: 1.15rem; color: var(--teal-deep);
-      text-decoration: none; border-bottom: 1px solid var(--teal); padding-bottom: .12rem;
+    /* ---------- footer: the mirage at the end ---------- */
+    footer {
+      position: relative; margin-top: 6rem; text-align: center; overflow: hidden; color: #f2f7f7;
+      background:
+        radial-gradient(70rem 36rem at 15% 120%, rgba(100,177,188,.25), transparent 60%),
+        linear-gradient(200deg, #1d5560, var(--teal-deep) 45%, var(--teal-ink));
+      padding: clamp(9rem, 15vh, 12rem) 1.5rem 3.2rem;
     }
-    footer .fine { margin-top: 1.6rem; font-size: .78rem; color: var(--muted); }
+    footer .waves { position: absolute; top: -1px; left: 0; width: 100%; height: 9rem; transform: scaleY(-1); }
+    footer .line-isnt {
+      font-family: Fraunces, Georgia, serif; font-weight: 400;
+      font-size: clamp(1.02rem, 3.5vw, 1.9rem); color: #f2f7f7; white-space: nowrap;
+    }
+    footer .waterline { width: min(23rem, 68vw); height: 2px; background: var(--teal); border-radius: 2px; margin: 1.05rem auto; }
+    footer .line-is {
+      font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300;
+      font-size: clamp(.98rem, 3.3vw, 1.8rem); color: #a9d2d9; white-space: nowrap;
+      transform: skewX(-8deg);
+    }
+    footer .quiet { margin-top: 2.8rem; font-size: .85rem; color: #6e9399; }
+    footer .quiet a { color: #a9d2d9; text-decoration: none; }
 
     @media (prefers-reduced-motion: no-preference) {
       .rise { opacity: 0; transform: translateY(14px); animation: rise .8s ease forwards; }
@@ -130,10 +141,7 @@
 
   <header class="hero">
     <div class="kicker rise">MIRAGE</div>
-    <div class="mw rise d1"><svg width="120" height="140" viewBox="0 0 150 176"><text x="75" y="78" font-family="Fraunces, Georgia" font-weight="300" font-size="84" fill="#f2f7f7" text-anchor="middle">M</text><line x1="22" y1="88" x2="128" y2="88" stroke="#64b1bc" stroke-width="2.6" stroke-linecap="round"></line><text x="75" y="78" font-family="Fraunces, Georgia" font-weight="300" font-size="84" fill="#64b1bc" text-anchor="middle" opacity="0.4" transform="translate(0,176) scale(1,-1)">M</text></svg></div>
-    <div class="line-isnt rise d2"><span class="ini-t">M</span>arriage <span class="ini-t">I</span>sn't <span class="ini-t">R</span>eally <span class="ini-t">A</span>bout <span class="ini-t">G</span>etting <span class="ini-t">E</span>verything</div>
-    <div class="waterline rise d2"></div>
-    <div class="line-is rise d2"><span class="ini-g">M</span>arriage <span class="ini-g">I</span>s <span class="ini-g">R</span>eally <span class="ini-g">A</span>bout <span class="ini-g">G</span>iving <span class="ini-g">E</span>verything</div>
+    <div class="mw rise d1"><svg width="150" height="176" viewBox="0 0 150 176"><text x="75" y="78" font-family="Fraunces, Georgia" font-weight="300" font-size="84" fill="#f2f7f7" text-anchor="middle">M</text><line x1="22" y1="88" x2="128" y2="88" stroke="#64b1bc" stroke-width="2.6" stroke-linecap="round"></line><text x="75" y="78" font-family="Fraunces, Georgia" font-weight="300" font-size="84" fill="#64b1bc" text-anchor="middle" opacity="0.4" transform="translate(0,176) scale(1,-1)">M</text></svg></div>
     <div class="rise d3"><a class="cta-main" href="/freedom">Find freedom</a></div>
     <svg class="waves" viewBox="0 0 1440 144" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 60 C 240 20 480 100 720 60 C 960 20 1200 100 1440 60 V144 H0 Z" fill="#64b1bc" opacity="0.16"></path>
@@ -201,11 +209,15 @@
   </div>
 
   <footer>
-    <div class="mark">M I R A G E</div>
-    <div class="who">Kevin &amp; Bethany Gorham</div>
-    <div class="mail"><a href="mailto:hello@mirage.faith">hello@mirage.faith</a></div>
-    <div class="fine"><a href="/freedom" style="color:inherit">Freedom Group</a> · <a href="/mmm" style="color:inherit">Marriage Meetup</a></div>
-    <div class="fine">Marriage Is Real And Growing Everyday</div>
+    <svg class="waves" viewBox="0 0 1440 144" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 60 C 240 20 480 100 720 60 C 960 20 1200 100 1440 60 V144 H0 Z" fill="#64b1bc" opacity="0.16"></path>
+      <path d="M0 90 C 260 55 500 125 740 90 C 980 55 1220 125 1440 90 V144 H0 Z" fill="#64b1bc" opacity="0.22"></path>
+      <path d="M0 118 C 280 92 520 140 760 118 C 1000 96 1240 138 1440 116 V144 H0 Z" fill="#f7f5f0"></path>
+    </svg>
+    <div class="line-isnt"><span class="ini-t">M</span>arriage <span class="ini-t">I</span>sn't <span class="ini-t">R</span>eally <span class="ini-t">A</span>bout <span class="ini-t">G</span>etting <span class="ini-t">E</span>verything</div>
+    <div class="waterline"></div>
+    <div class="line-is"><span class="ini-g">M</span>arriage <span class="ini-g">I</span>s <span class="ini-g">R</span>eally <span class="ini-g">A</span>bout <span class="ini-g">G</span>iving <span class="ini-g">E</span>verything</div>
+    <div class="quiet"><a href="mailto:hello@mirage.faith">hello@mirage.faith</a> &nbsp;&middot;&nbsp; Kevin &amp; Bethany Gorham</div>
   </footer>
 
   <script>
