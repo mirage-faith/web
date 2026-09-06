@@ -121,6 +121,25 @@
     .wk.conf { background: var(--gold); color: #3d3012; font-size: .7rem; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; font-family: Inter, sans-serif; }
     .legend { margin-top: .8rem; font-size: .8rem; color: var(--muted); }
 
+    /* this week's reflection */
+    .reflect { margin-top: 1.6rem; background: #ffffff; border: 1px solid var(--line, #e6e0d3); border-left: 3px solid var(--teal); border-radius: 1.1rem; padding: 1.7rem 2rem; }
+    .reflect .r-ref { font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+    .reflect .r-verse { font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300; font-size: 1.3rem; color: var(--teal-ink); line-height: 1.4; margin-top: .7rem; }
+    .reflect .r-thought { margin-top: .9rem; color: #45575b; line-height: 1.7; max-width: 60ch; }
+    /* resource library */
+    .sessions { margin-top: 1.6rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: .7rem; }
+    .sess {
+      display: flex; align-items: center; gap: .8rem; text-decoration: none;
+      background: #fbfaf7; border: 1px solid var(--line, #e6e0d3); border-radius: .8rem; padding: .8rem 1rem;
+      transition: border-color .2s, background .2s;
+    }
+    .sess:hover { border-color: var(--teal); background: #ffffff; }
+    .sess .ic { flex: none; color: var(--teal); }
+    .sess .st { font-family: Fraunces, Georgia, serif; font-size: 1.02rem; color: var(--teal-ink); }
+    .sess .sk { font-size: .74rem; color: var(--muted, #5e7176); margin-top: .1rem; letter-spacing: .04em; }
+    .libnote { margin-top: 1.4rem; font-size: .9rem; color: #45575b; line-height: 1.6; }
+    .libnote a { color: var(--teal-deep, #144049); border-bottom: 1px solid var(--teal); text-decoration: none; }
+    .credit { margin-top: 1rem; font-size: .78rem; color: var(--muted, #5e7176); font-style: italic; }
     /* themes */
     .themes { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: .6rem; }
     .theme {
@@ -214,13 +233,20 @@
     </div>
     <div class="weeks" id="weeks" aria-label="12 week journey"></div>
     <div class="legend" id="legend"></div>
+    <div class="reflect" id="reflect" hidden>
+      <div class="r-ref" id="r-ref"></div>
+      <div class="r-verse" id="r-verse"></div>
+      <div class="r-thought" id="r-thought"></div>
+    </div>
   </section>
 
   <section>
-    <div class="eyebrow">The territory</div>
-    <h2>What we'll walk through together</h2>
-    <p class="prose">Freedom isn't a class; it's a guided journey through the places where everyone gets stuck. Along the way, the curriculum opens up themes like these:</p>
-    <div class="themes" id="themes"></div>
+    <div class="eyebrow">Take it deeper</div>
+    <h2>The Freedom sessions, free to anyone</h2>
+    <p class="prose">Freedom isn't a class; it's a guided journey through the places where everyone gets stuck. Every teaching session is freely available to listen to, whether you're in the group or just curious. Start anywhere.</p>
+    <div class="sessions" id="sessions"></div>
+    <p class="libnote" id="libnote"></p>
+    <p class="credit">Curriculum by <a href="https://freedom.churchofthehighlands.com/curriculum" target="_blank" rel="noopener">Church of the Highlands</a>, offered freely. We're honored to walk it with you.</p>
   </section>
 
   <section>
@@ -300,11 +326,30 @@
         weekN <= s.totalWeeks
           ? `Week ${weekN} of ${s.totalWeeks} · begins ${fmt(start)} · culminates at the ${s.conference.name}`
           : `All ${s.totalWeeks} weeks complete`;
-      // themes + conference
-      document.getElementById("themes").innerHTML = s.themes.map(t => `<div class="theme">${t}</div>`).join("");
+      // conference
       document.getElementById("conf-name").textContent = s.conference.name;
       document.getElementById("conf-note").textContent =
         (s.conference.dateConfirmed ? s.conference.expected : s.conference.expected + " (exact date announced soon)") + ". " + s.conference.note;
+
+      // resources: weekly reflection (advances with weekN) + session library
+      const res = await fetch("/freedom/resources.json", { cache: "no-store" }).then(r => r.json()).catch(() => null);
+      if (res) {
+        const idx = Math.min(Math.max(weekN, 1), res.reflections.length) - 1;
+        const rfl = res.reflections[idx];
+        if (rfl) {
+          document.getElementById("r-ref").textContent = "A reflection for this week · " + rfl.ref;
+          document.getElementById("r-verse").textContent = "“" + rfl.verse + "”";
+          document.getElementById("r-thought").textContent = rfl.thought;
+          document.getElementById("reflect").hidden = false;
+        }
+        const play = '<svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"></path></svg>';
+        document.getElementById("sessions").innerHTML = res.sessions.map(x =>
+          `<a class="sess" href="${x.url}" target="_blank" rel="noopener">${play}<span><span class="st">${x.title}</span><span class="sk">Listen &middot; audio session</span></span></a>`).join("");
+        document.getElementById("libnote").innerHTML =
+          `Prefer to watch? Sample video sessions are on Church of the Highlands (` +
+          res.videos.map((v, i) => `<a href="${v.url}" target="_blank" rel="noopener">${v.title}</a>`).join(", ") +
+          `), and the full curriculum lives <a href="${res.curriculumUrl}" target="_blank" rel="noopener">here</a>.`;
+      }
     })();
   </script>
 </body>
