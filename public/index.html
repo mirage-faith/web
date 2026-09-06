@@ -225,10 +225,17 @@
     (async () => {
       try {
         const s = await fetch("/freedom/schedule.json", { cache: "no-store" }).then(r => r.json());
-        const start = new Date(s.startDate + "T12:00:00");
-        const now = new Date(), day = 86400000;
+        // Eastern calendar-day anchor, matching the /freedom page.
+        const day = 86400000;
+        const et = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hour12: false,
+        }).formatToParts(new Date());
+        const etv = t => et.find(p => p.type === t).value;
+        const today = new Date(`${etv("year")}-${etv("month")}-${etv("day")}T00:00:00Z`);
+        const start = new Date(s.startDate + "T00:00:00Z");
         let next = new Date(start);
-        while (next.getTime() + 12 * 3600000 < now.getTime()) next = new Date(next.getTime() + 7 * day);
+        while (next.getTime() < today.getTime()) next = new Date(next.getTime() + 7 * day);
+        if (next.getTime() === today.getTime() && (parseInt(etv("hour"), 10) % 24) >= 17) next = new Date(next.getTime() + 7 * day);
         const weekN = Math.round((next - start) / (7 * day)) + 1;
         const chip = document.getElementById("freedom-chip");
         chip.textContent = weekN > s.totalWeeks

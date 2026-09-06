@@ -248,15 +248,26 @@
       document.getElementById("m-where").textContent = s.location;
       document.getElementById("m-care").textContent = s.childcare;
       document.getElementById("m-hosts").textContent = s.hosts.replace(" Gorham", "");
-      // date math: sessions are Sundays starting startDate; the page always
-      // previews the NEXT session, so it advances naturally on Monday.
-      const start = new Date(s.startDate + "T12:00:00");
-      const now = new Date();
+      // Date math anchored to Eastern (the group meets in Fishers, IN),
+      // not the viewer's zone and not UTC. Compare whole CALENDAR days so
+      // the badge never says "Tomorrow" on the event morning.
       const day = 86400000;
+      const et = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York", year: "numeric", month: "2-digit",
+        day: "2-digit", hour: "2-digit", hour12: false,
+      }).formatToParts(new Date());
+      const etv = t => et.find(p => p.type === t).value;
+      // Midnight-of-today and midnight-of-startDate as UTC instants so the
+      // subtraction yields exact whole days regardless of viewer zone.
+      const today = new Date(`${etv("year")}-${etv("month")}-${etv("day")}T00:00:00Z`);
+      const hourET = parseInt(etv("hour"), 10) % 24;
+      const start = new Date(s.startDate + "T00:00:00Z");
       let next = new Date(start);
-      while (next.getTime() + 12 * 3600000 < now.getTime()) next = new Date(next.getTime() + 7 * day);
+      while (next.getTime() < today.getTime()) next = new Date(next.getTime() + 7 * day);
+      // If today is the session day but the 4PM meeting has passed, preview next week.
+      if (next.getTime() === today.getTime() && hourET >= 17) next = new Date(next.getTime() + 7 * day);
       const weekN = Math.round((next - start) / (7 * day)) + 1;
-      const fmt = d => d.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+      const fmt = d => d.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", month: "long", day: "numeric" });
       const title = document.getElementById("now-title");
       const when = document.getElementById("now-when");
       const badge = document.getElementById("now-badge");
@@ -267,7 +278,7 @@
       } else {
         const wk = s.weeks[weekN - 1] || {};
         title.textContent = wk.topic ? `Week ${weekN}: ${wk.topic}` : `Week ${weekN} of ${s.totalWeeks}`;
-        const days = Math.ceil((next - now) / day);
+        const days = Math.round((next - today) / day);
         when.textContent = `${fmt(next)} · ${s.time} · ${s.location}` + (weekN === 1 ? " (we begin!)" : "");
         badge.textContent = days <= 0 ? "Today" : days === 1 ? "Tomorrow" : `In ${days} days`;
       }
