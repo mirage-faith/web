@@ -135,8 +135,9 @@
     }
     .sess:hover { border-color: var(--teal); background: #ffffff; }
     .sess .ic { flex: none; color: var(--teal); }
+    .sess .body { display: flex; flex-direction: column; line-height: 1.25; }
     .sess .st { font-family: Fraunces, Georgia, serif; font-size: 1.02rem; color: var(--teal-ink); }
-    .sess .sk { font-size: .74rem; color: var(--muted, #5e7176); margin-top: .1rem; letter-spacing: .04em; }
+    .sess .sk { font-size: .74rem; color: var(--muted, #5e7176); margin-top: .15rem; letter-spacing: .04em; }
     .libnote { margin-top: 1.4rem; font-size: .9rem; color: #45575b; line-height: 1.6; }
     .libnote a { color: var(--teal-deep, #144049); border-bottom: 1px solid var(--teal); text-decoration: none; }
     .credit { margin-top: 1rem; font-size: .78rem; color: var(--muted, #5e7176); font-style: italic; }
@@ -344,7 +345,7 @@
         }
         const play = '<svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"></path></svg>';
         document.getElementById("sessions").innerHTML = res.sessions.map(x =>
-          `<a class="sess" href="${x.url}" target="_blank" rel="noopener">${play}<span><span class="st">${x.title}</span><span class="sk">Listen &middot; audio session</span></span></a>`).join("");
+          `<a class="sess" href="${x.url}" target="_blank" rel="noopener">${play}<span class="body"><span class="st">${x.title}</span><span class="sk">Listen &middot; audio session</span></span></a>`).join("");
         document.getElementById("libnote").innerHTML =
           `Prefer to watch? Sample video sessions are on Church of the Highlands (` +
           res.videos.map((v, i) => `<a href="${v.url}" target="_blank" rel="noopener">${v.title}</a>`).join(", ") +
