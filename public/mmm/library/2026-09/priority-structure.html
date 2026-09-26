@@ -73,7 +73,7 @@
   <script>
     (() => {
       const NAT_W = 1200, NAT_H = 1105, ASPECT = NAT_W / NAT_H;
-      const MIN = 100, STEP = 25;   // 100% == fit to page
+      const MIN = 100, MAX = 300, STEP = 25;   // 100% == fit to page; grows to 3x fit
       let z = 100;
       const img = document.getElementById("img");
       const pct = document.getElementById("pct");
@@ -85,18 +85,13 @@
         const availH = window.innerHeight - 108;       // room for the control bar + padding
         return Math.max(140, Math.min(NAT_W, availW, availH * ASPECT));
       };
-      // Stop zooming in once the graphic is shown at its native pixels: past
-      // that, + would only upscale (blur) without revealing more detail.
-      const maxZoom = () => Math.max(MIN, Math.floor((NAT_W / fitWidth() * 100) / STEP) * STEP);
       const apply = () => {
-        const mx = maxZoom();
-        if (z > mx) z = mx;
         img.style.width = Math.round(fitWidth() * z / 100) + "px";
         pct.textContent = z === 100 ? "Fit" : z + "%";
-        zin.disabled = z >= mx;
+        zin.disabled = z >= MAX;
         zout.disabled = z <= MIN;
       };
-      zin.addEventListener("click", () => { z = Math.min(maxZoom(), z + STEP); apply(); });
+      zin.addEventListener("click", () => { z = Math.min(MAX, z + STEP); apply(); });
       zout.addEventListener("click", () => { z = Math.max(MIN, z - STEP); apply(); });
       window.addEventListener("resize", apply);
       apply();
