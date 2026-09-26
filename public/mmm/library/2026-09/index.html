@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Priorities · MMM · mirage.faith</title>
+  <meta name="description" content="God's order for a life that holds together. The September teaching from the Monthly Marriage Meetup, with the handout to take home.">
+  <meta property="og:title" content="Priorities · the September teaching">
+  <meta property="og:description" content="God's order for a life that holds together, and why the order is the thing under most of what strains a marriage.">
+  <meta property="og:url" content="https://mirage.faith/mmm/library/2026-09/">
+  <meta property="og:type" content="article">
+  <meta name="theme-color" content="#3b2f14">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23144049'/%3E%3Ctext x='32' y='31' font-family='Georgia' font-size='26' fill='%23f2f7f7' text-anchor='middle'%3EM%3C/text%3E%3Cline x1='16' y1='34.5' x2='48' y2='34.5' stroke='%2364b1bc' stroke-width='1.6' stroke-linecap='round'/%3E%3Ctext x='32' y='31' font-family='Georgia' font-size='26' fill='%2364b1bc' text-anchor='middle' opacity='0.45' transform='translate(0,70.5) scale(1,-1)'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #64b1bc; --teal-deep: #144049; --teal-ink: #0d2b31;
+      --paper: #f7f5f0; --ink: #1d2a2d; --card: #ffffff;
+      --muted: #5e7176; --gold: #c9a86a; --gold-deep: #3b2f14; --line: #e6e0d3;
+    }
+    * { margin: 0; box-sizing: border-box; }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    .fr { font-family: Fraunces, Georgia, serif; }
+
+    .hero {
+      position: relative; text-align: center; color: #f6f0e2; overflow: hidden;
+      background:
+        radial-gradient(70rem 40rem at 85% -20%, rgba(201,168,106,.34), transparent 60%),
+        linear-gradient(160deg, #26200f, var(--gold-deep) 55%, #574422);
+      padding: clamp(3.5rem, 9vh, 6rem) 1.5rem clamp(3.5rem, 9vh, 6rem);
+    }
+    .home { position: absolute; top: 1.2rem; left: 1.4rem; z-index: 2; color: #d9c8a2; text-decoration: none; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; }
+    .home:hover { color: #f6f0e2; }
+    .kicker { font-size: .76rem; letter-spacing: .3em; text-transform: uppercase; color: #dcc48f; font-weight: 600; }
+    .hero h1 { font-family: Fraunces, Georgia, serif; font-weight: 300; font-size: clamp(2.8rem, 9vw, 4.6rem); margin: 1rem 0 .8rem; }
+    .hero .sub { font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300; font-size: clamp(1.1rem, 3vw, 1.4rem); color: #e6d7b5; max-width: 42ch; margin: 0 auto; }
+
+    main { max-width: 44rem; margin: 0 auto; padding: clamp(3rem, 7vh, 5rem) 1.5rem 0; }
+    .lede { font-family: Fraunces, Georgia, serif; font-weight: 300; font-size: clamp(1.3rem, 3.2vw, 1.65rem); color: var(--teal-ink); line-height: 1.5; }
+
+    .principles { margin-top: 2.6rem; display: flex; flex-direction: column; gap: 1.8rem; counter-reset: p; }
+    .principle { display: grid; grid-template-columns: 2.4rem 1fr; gap: 1rem; }
+    .principle .n { counter-increment: p; font-family: Fraunces, Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--gold); line-height: 1.1; }
+    .principle .n::before { content: counter(p); }
+    .principle h3 { font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 1.2rem; color: var(--teal-ink); }
+    .principle p { margin-top: .4rem; color: #3c4d51; }
+
+    figure { margin: 3.4rem 0 0; }
+    figure img { width: 100%; height: auto; border-radius: 1rem; border: 1px solid var(--line); box-shadow: 0 18px 50px -30px rgba(38,32,15,.5); display: block; }
+    figcaption { margin-top: .8rem; font-size: .82rem; color: var(--muted); text-align: center; font-style: italic; }
+
+    .pull {
+      margin: 3.4rem 0 0; border-left: 3px solid var(--gold); padding: .4rem 0 .4rem 1.4rem;
+      font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300;
+      font-size: 1.22rem; color: var(--gold-deep); line-height: 1.55;
+    }
+
+    .take {
+      margin: 3.6rem 0 0; background: var(--card); border: 1px solid var(--line); border-radius: 1.1rem;
+      padding: 1.9rem 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem; justify-content: space-between;
+    }
+    .take .t { font-family: Fraunces, Georgia, serif; font-size: 1.25rem; color: var(--teal-ink); }
+    .take .s { font-size: .9rem; color: var(--muted); margin-top: .25rem; }
+    .dl {
+      display: inline-flex; align-items: center; gap: .55rem; text-decoration: none; white-space: nowrap;
+      font-family: Fraunces, Georgia, serif; font-size: 1.05rem; color: #f6f0e2;
+      background: var(--gold-deep); border: 1px solid var(--gold-deep); border-radius: 999px; padding: .75rem 1.6rem;
+      transition: background .2s;
+    }
+    .dl:hover { background: #574422; }
+
+    .credit { margin: 2.4rem 0 0; font-size: .84rem; color: var(--muted); font-style: italic; }
+    footer { margin-top: 4.5rem; padding: 2.6rem 1.5rem 3rem; text-align: center; border-top: 1px solid var(--line); }
+    footer a { color: var(--gold-deep); text-decoration: none; border-bottom: 1px solid var(--gold); }
+    footer .fine { margin-top: .8rem; font-size: .78rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <a class="home" href="/mmm/library/">&larr; The Library</a>
+    <div class="kicker">Monthly Marriage Meetup · September 2026</div>
+    <h1>Priorities</h1>
+    <p class="sub">God's order for a life that holds together.</p>
+  </header>
+
+  <main>
+    <p class="lede">Most of what strains a marriage (the money, the calendar, a slow drift apart) are symptoms. Underneath them sits a question of order. Get the order right and the relationships downstream begin to work; get it backward and you spend your life fighting brush fires while the real one keeps burning.</p>
+
+    <div class="principles">
+      <div class="principle"><div class="n"></div><div>
+        <h3>It is a foundation, not a ranking.</h3>
+        <p>Each layer holds up the one above it. Filled by God, you overflow into your marriage; a steady marriage becomes a safe place for your kids to stand; and from that fullness you serve and work without running on empty. Nothing higher holds when the layer beneath it is cracked.</p>
+      </div></div>
+      <div class="principle"><div class="n"></div><div>
+        <h3>Putting your spouse ahead of your kids is not loving them less.</h3>
+        <p>It is how you love them well. A solid marriage is the safety nest your children actually rest in; kids feel steady when the two people holding their world are steady with each other.</p>
+      </div></div>
+      <div class="principle"><div class="n"></div><div>
+        <h3>You cannot just wedge someone back in.</h3>
+        <p>When the calendar is already full and your marriage has slipped down the stack, the instinct is to shove things back and squeeze your spouse into the gap. Take all the pieces off the table instead: God down first, then your marriage, then build the rest of life around them. It will cost you something real, and if it costs nothing, your marriage quietly stays last.</p>
+      </div></div>
+      <div class="principle"><div class="n"></div><div>
+        <h3>Notice where your heart is tied.</h3>
+        <p>You can be home on the couch, phone in hand, mind still back at work: a rubber band that snaps you away the moment you are free. Your body goes where the calendar sends it; your heart stays where your treasure is.</p>
+      </div></div>
+      <div class="principle"><div class="n"></div><div>
+        <h3>The gap is rarely knowing; it is living.</h3>
+        <p>Most of us nod at all of this. The honest question is whether we believe it enough to give something up for it. Priorities drift on their own, so keeping them in order is quiet, ongoing work you do together, and it is worth every bit.</p>
+      </div></div>
+    </div>
+
+    <figure>
+      <img src="./priority-structure.png" alt="Priority Structure: God's order (God, spouse, children, service, extended family, work, built as a firm foundation) versus the world's inverted order (work and ministry on top, God crushed at the bottom).">
+      <figcaption>God's order is a foundation; the world's is the same stack turned upside down.</figcaption>
+    </figure>
+
+    <blockquote class="pull">One of our teachers spent years telling his children their mother came first, and it wounded them, until he found different words: it is not that she matters more than you; it is that the two of us have to be steady enough to build a safe place for you to be. That reframe changed everything.</blockquote>
+
+    <div class="take">
+      <div>
+        <div class="t">Take the teaching home</div>
+        <div class="s">The one-page Priorities handout (PDF)</div>
+      </div>
+      <a class="dl" href="./handout-priorities.pdf" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 11l5 4 5-4"></path><path d="M5 21h14"></path></svg>
+        Download the handout
+      </a>
+    </div>
+
+    <p class="credit">This teaching is adapted from the Shepherd's Heart Ministry Training Institute (Session 1, Module 2), tools forged over decades of marriage ministry. We are grateful to carry them to couples preventatively, before the storms come.</p>
+  </main>
+
+  <footer>
+    <a href="/mmm/library/">More from the Library</a>
+    <div class="fine"><a href="/mmm" style="border:0">Monthly Marriage Meetup</a> · <a href="/" style="border:0">mirage.faith</a></div>
+  </footer>
+</body>
+</html>

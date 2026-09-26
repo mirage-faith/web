@@ -1,0 +1,15 @@
+{
+  "_meta": "MMM teaching library. Newest first. A month with a `page` has its own detail page; a thin month can start with just a `handout` and graduate later. Adding a month: drop files in a slug folder, add an entry here, git push.",
+  "entries": [
+    {
+      "slug": "2026-09",
+      "date": "2026-09-26",
+      "topic": "Priorities",
+      "summary": "God's order for a life that holds together, and why the order is the thing under most of what strains a marriage.",
+      "page": "2026-09/",
+      "handout": "2026-09/handout-priorities.pdf",
+      "cover": "2026-09/priority-structure.png",
+      "source": "Adapted from Shepherd's Heart Ministry Training Institute"
+    }
+  ]
+}
