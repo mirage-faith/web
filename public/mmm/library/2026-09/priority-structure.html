@@ -15,7 +15,9 @@
     /* scrollable stage. margin:auto on the child centers it AND still lets
        you scroll to every edge once zoom makes it larger than the viewport. */
     .stage { min-height: 100vh; display: flex; padding: 5rem 1rem 2rem; }
-    .stage img { margin: auto; display: block; height: auto; transition: width .18s ease-out; }
+    /* flex:none so the image keeps its set width and overflows to scroll,
+       instead of flex-shrinking back to the viewport (which stalled zoom). */
+    .stage img { flex: none; margin: auto; display: block; height: auto; transition: width .18s ease-out; }
 
     .back {
       position: fixed; top: 1.05rem; left: 1.1rem; z-index: 10; color: #7a6a4b; text-decoration: none;
@@ -44,7 +46,12 @@
       transition: background .2s;
     }
     .ctl .pdf:hover { background: #574422; }
-    @media (max-width: 560px) { .ctl .pdf span { display: none; } .ctl .pdf { padding: .5rem .7rem; } }
+    /* On phones, drop the zoom buttons (pinch-to-zoom is natural) and give
+       the space back to the full PDF label. */
+    @media (max-width: 640px) {
+      .ctl #out, .ctl #in, .ctl .pct { display: none; }
+      .ctl { padding: 0; border: 0; background: none; box-shadow: none; }
+    }
   </style>
 </head>
 <body>
@@ -66,7 +73,7 @@
   <script>
     (() => {
       const NAT_W = 1200, NAT_H = 1105, ASPECT = NAT_W / NAT_H;
-      const MIN = 100, MAX = 400, STEP = 25;   // 100% == fit to page
+      const MIN = 100, STEP = 25;   // 100% == fit to page
       let z = 100;
       const img = document.getElementById("img");
       const pct = document.getElementById("pct");
@@ -78,13 +85,18 @@
         const availH = window.innerHeight - 108;       // room for the control bar + padding
         return Math.max(140, Math.min(NAT_W, availW, availH * ASPECT));
       };
+      // Stop zooming in once the graphic is shown at its native pixels: past
+      // that, + would only upscale (blur) without revealing more detail.
+      const maxZoom = () => Math.max(MIN, Math.floor((NAT_W / fitWidth() * 100) / STEP) * STEP);
       const apply = () => {
+        const mx = maxZoom();
+        if (z > mx) z = mx;
         img.style.width = Math.round(fitWidth() * z / 100) + "px";
         pct.textContent = z === 100 ? "Fit" : z + "%";
-        zin.disabled = z >= MAX;
+        zin.disabled = z >= mx;
         zout.disabled = z <= MIN;
       };
-      zin.addEventListener("click", () => { z = Math.min(MAX, z + STEP); apply(); });
+      zin.addEventListener("click", () => { z = Math.min(maxZoom(), z + STEP); apply(); });
       zout.addEventListener("click", () => { z = Math.max(MIN, z - STEP); apply(); });
       window.addEventListener("resize", apply);
       apply();
