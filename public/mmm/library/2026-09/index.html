@@ -75,30 +75,8 @@
     .veil .pill.dl:hover { background: var(--gold-deep); border-color: var(--gold); }
     figcaption { margin-top: .8rem; font-size: .82rem; color: var(--muted); text-align: center; font-style: italic; }
 
-    /* lightbox */
-    .lb { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: clamp(.7rem, 2vw, 1.4rem);
-      background: rgba(20,16,7,.66); backdrop-filter: blur(10px); opacity: 0; visibility: hidden;
-      transition: opacity .35s ease, visibility .35s; }
-    .lb.open { opacity: 1; visibility: visible; }
-    .lb .stage { max-width: none; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .9rem;
-      transform: scale(.965) translateY(6px); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
-    .lb.open .stage { transform: none; }
-    .lb img { max-width: 98vw; max-height: 88vh; width: auto; height: auto; object-fit: contain; border-radius: .6rem; box-shadow: 0 40px 100px -30px rgba(0,0,0,.6); }
-    .lb .bar { display: flex; gap: .7rem; align-items: center; }
-    .lb .lbtn {
-      display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; cursor: pointer;
-      font-family: Fraunces, Georgia, serif; font-size: 1rem; color: #f6f0e2;
-      background: rgba(246,240,226,.12); border: 1px solid rgba(246,240,226,.3); border-radius: 999px; padding: .65rem 1.4rem;
-      transition: background .2s, border-color .2s;
-    }
-    .lb .lbtn.primary { background: var(--gold-deep); border-color: var(--gold); }
-    .lb .lbtn:hover { background: rgba(246,240,226,.2); }
-    .lb .lbtn.primary:hover { background: #574422; }
-    .lb .close { position: fixed; top: 1.1rem; right: 1.2rem; width: 2.6rem; height: 2.6rem; border-radius: 999px;
-      display: grid; place-items: center; color: #f6f0e2; background: rgba(246,240,226,.12); border: 1px solid rgba(246,240,226,.3); cursor: pointer; }
-    .lb .close:hover { background: rgba(246,240,226,.22); }
     @media (prefers-reduced-motion: reduce) {
-      .figframe, .figframe img, .figframe .veil .pill, .lb, .lb .stage { transition: none; }
+      .figframe, .figframe img, .figframe .veil .pill { transition: none; }
       .figframe:hover, .figframe:hover img { transform: none; }
     }
 
@@ -176,26 +154,14 @@
     </div>
 
     <figure>
-      <button class="figframe" id="figframe" type="button" aria-label="Expand the priority structure graphic">
+      <a class="figframe" href="./priority-structure.html" target="_blank" rel="noopener" aria-label="Open the priority structure graphic full size in a new tab">
         <img src="./priority-structure.png" alt="Priority Structure: God's order (God, spouse, children, service, extended family, work, built as a firm foundation) versus the world's inverted order (work and ministry on top, God crushed at the bottom).">
         <span class="veil">
-          <span class="pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>Click to expand</span>
+          <span class="pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>Open full size</span>
         </span>
-      </button>
-      <figcaption>God's order is a foundation; the world's is the same stack turned upside down. Click to see it full size.</figcaption>
+      </a>
+      <figcaption>God's order is a foundation; the world's is the same stack turned upside down. Open it full size for a closer look.</figcaption>
     </figure>
-
-    <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Priority structure, full size" hidden>
-      <button class="close" id="lbclose" type="button" aria-label="Close">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-      </button>
-      <div class="stage">
-        <img src="./priority-structure.png" alt="Priority Structure graphic, full size.">
-        <div class="bar">
-          <a class="lbtn primary" href="./handout-priorities.pdf" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V4h12v5"></path><path d="M6 18H4v-6h16v6h-2"></path><path d="M8 14h8v6H8z"></path></svg>Printable version (PDF)</a>
-        </div>
-      </div>
-    </div>
 
     <blockquote class="pull">One of our teachers spent years telling his children their mother came first, and it wounded them, until he found different words: it is not that she matters more than you; it is that the two of us have to be steady enough to build a safe place for you to be. That reframe changed everything.</blockquote>
 
@@ -223,19 +189,5 @@
     <div class="fine"><a href="/mmm" style="border:0">Monthly Marriage Meetup</a> · <a href="/" style="border:0">mirage.faith</a></div>
   </footer>
 
-  <script>
-    (() => {
-      const frame = document.getElementById("figframe");
-      const lb = document.getElementById("lb");
-      const closeBtn = document.getElementById("lbclose");
-      if (!frame || !lb) return;
-      const open = () => { lb.hidden = false; requestAnimationFrame(() => lb.classList.add("open")); document.body.style.overflow = "hidden"; closeBtn.focus(); };
-      const close = () => { lb.classList.remove("open"); document.body.style.overflow = ""; setTimeout(() => { lb.hidden = true; }, 360); frame.focus(); };
-      frame.addEventListener("click", open);
-      closeBtn.addEventListener("click", close);
-      lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && lb.classList.contains("open")) close(); });
-    })();
-  </script>
 </body>
 </html>
