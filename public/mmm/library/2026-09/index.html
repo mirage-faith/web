@@ -76,14 +76,14 @@
     figcaption { margin-top: .8rem; font-size: .82rem; color: var(--muted); text-align: center; font-style: italic; }
 
     /* lightbox */
-    .lb { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: clamp(1rem, 4vw, 3rem);
-      background: rgba(20,16,7,.62); backdrop-filter: blur(10px); opacity: 0; visibility: hidden;
+    .lb { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: clamp(.7rem, 2vw, 1.4rem);
+      background: rgba(20,16,7,.66); backdrop-filter: blur(10px); opacity: 0; visibility: hidden;
       transition: opacity .35s ease, visibility .35s; }
     .lb.open { opacity: 1; visibility: visible; }
-    .lb .stage { max-width: 96rem; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    .lb .stage { max-width: none; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .9rem;
       transform: scale(.965) translateY(6px); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
     .lb.open .stage { transform: none; }
-    .lb img { max-width: 100%; max-height: 78vh; height: auto; border-radius: .7rem; box-shadow: 0 40px 100px -30px rgba(0,0,0,.6); }
+    .lb img { max-width: 98vw; max-height: 88vh; width: auto; height: auto; object-fit: contain; border-radius: .6rem; box-shadow: 0 40px 100px -30px rgba(0,0,0,.6); }
     .lb .bar { display: flex; gap: .7rem; align-items: center; }
     .lb .lbtn {
       display: inline-flex; align-items: center; gap: .5rem; text-decoration: none; cursor: pointer;
@@ -180,7 +180,6 @@
         <img src="./priority-structure.png" alt="Priority Structure: God's order (God, spouse, children, service, extended family, work, built as a firm foundation) versus the world's inverted order (work and ministry on top, God crushed at the bottom).">
         <span class="veil">
           <span class="pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>Click to expand</span>
-          <span class="pill dl" data-dl><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 11l5 4 5-4"></path><path d="M5 21h14"></path></svg>Download</span>
         </span>
       </button>
       <figcaption>God's order is a foundation; the world's is the same stack turned upside down. Click to see it full size.</figcaption>
@@ -193,8 +192,7 @@
       <div class="stage">
         <img src="./priority-structure.png" alt="Priority Structure graphic, full size.">
         <div class="bar">
-          <a class="lbtn primary" href="./priority-structure.png" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 11l5 4 5-4"></path><path d="M5 21h14"></path></svg>Download the graphic</a>
-          <a class="lbtn" href="./handout-priorities.pdf" target="_blank" rel="noopener">The full handout (PDF)</a>
+          <a class="lbtn primary" href="./handout-priorities.pdf" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V4h12v5"></path><path d="M6 18H4v-6h16v6h-2"></path><path d="M8 14h8v6H8z"></path></svg>Printable version (PDF)</a>
         </div>
       </div>
     </div>
@@ -233,11 +231,7 @@
       if (!frame || !lb) return;
       const open = () => { lb.hidden = false; requestAnimationFrame(() => lb.classList.add("open")); document.body.style.overflow = "hidden"; closeBtn.focus(); };
       const close = () => { lb.classList.remove("open"); document.body.style.overflow = ""; setTimeout(() => { lb.hidden = true; }, 360); frame.focus(); };
-      frame.addEventListener("click", (e) => {
-        // the in-figure Download pill downloads instead of expanding
-        if (e.target.closest("[data-dl]")) { e.preventDefault(); const a = document.createElement("a"); a.href = "./priority-structure.png"; a.download = ""; a.click(); return; }
-        open();
-      });
+      frame.addEventListener("click", open);
       closeBtn.addEventListener("click", close);
       lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
       document.addEventListener("keydown", (e) => { if (e.key === "Escape" && lb.classList.contains("open")) close(); });
