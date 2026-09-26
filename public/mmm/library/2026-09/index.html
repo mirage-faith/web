@@ -122,7 +122,20 @@
     }
     .dl:hover { background: #574422; }
 
-    .credit { margin: 2.4rem 0 0; font-size: .84rem; color: var(--muted); font-style: italic; }
+    .attrib {
+      margin: 3rem 0 0; background: #ffffff; border: 1px solid var(--line); border-top: 3px solid var(--gold);
+      border-radius: 1.1rem; padding: 1.8rem 2rem;
+    }
+    .attrib .ey { font-size: .7rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .attrib .name {
+      display: inline-block; margin-top: .5rem; font-family: Fraunces, Georgia, serif; font-weight: 400;
+      font-size: 1.6rem; color: var(--teal-ink); text-decoration: none; border-bottom: 2px solid var(--gold);
+      padding-bottom: .12rem; transition: color .2s;
+    }
+    .attrib .name:hover { color: var(--gold-deep); }
+    .attrib .name .arw { font-size: 1.1rem; color: var(--gold); }
+    .attrib p { margin-top: .8rem; color: #3c4d51; line-height: 1.7; }
+    .attrib .visit { display: inline-block; margin-top: 1rem; font-family: Fraunces, Georgia, serif; color: var(--gold-deep); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: .1rem; }
     footer { margin-top: 4.5rem; padding: 2.6rem 1.5rem 3rem; text-align: center; border-top: 1px solid var(--line); }
     footer a { color: var(--gold-deep); text-decoration: none; border-bottom: 1px solid var(--gold); }
     footer .fine { margin-top: .8rem; font-size: .78rem; color: var(--muted); }
@@ -199,7 +212,12 @@
       </a>
     </div>
 
-    <p class="credit">This teaching is adapted from the Shepherd's Heart Ministry Training Institute (Session 1, Module 2), tools forged over decades of marriage ministry. We are grateful to carry them to couples preventatively, before the storms come.</p>
+    <div class="attrib">
+      <div class="ey">The teaching behind this</div>
+      <a class="name" href="https://shministry.com/" target="_blank" rel="noopener">Shepherd's Heart Ministry <span class="arw">&rarr;</span></a>
+      <p>This teaching is adapted from the Shepherd's Heart Ministry Training Institute (Session 1, Module 2), tools forged over decades of marriage and restoration ministry. We are grateful to carry them to couples preventatively, before the storms come.</p>
+      <a class="visit" href="https://shministry.com/" target="_blank" rel="noopener">Visit shministry.com</a>
+    </div>
   </main>
 
   <footer>
