@@ -12,9 +12,10 @@
   <style>
     * { margin: 0; box-sizing: border-box; }
     body { background: #fdf5ea; font-family: Fraunces, Georgia, serif; min-height: 100vh; }
-    /* scrollable stage: image centered when small, scrolls when zoomed big */
-    .stage { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 5.5rem 1.2rem 2.5rem; }
-    .stage img { display: block; height: auto; transition: width .18s ease-out; }
+    /* scrollable stage. margin:auto on the child centers it AND still lets
+       you scroll to every edge once zoom makes it larger than the viewport. */
+    .stage { min-height: 100vh; display: flex; padding: 5rem 1rem 2rem; }
+    .stage img { margin: auto; display: block; height: auto; transition: width .18s ease-out; }
 
     .back {
       position: fixed; top: 1.05rem; left: 1.1rem; z-index: 10; color: #7a6a4b; text-decoration: none;
@@ -50,7 +51,7 @@
   <a class="back" href="/mmm/library/2026-09/">&larr; Back</a>
   <div class="ctl">
     <button id="out" type="button" aria-label="Zoom out">&minus;</button>
-    <span class="pct" id="pct">120%</span>
+    <span class="pct" id="pct">Fit</span>
     <button id="in" type="button" aria-label="Zoom in">+</button>
     <a class="pdf" href="./handout-priorities.pdf" target="_blank" rel="noopener">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V4h12v5"></path><path d="M6 18H4v-6h16v6h-2"></path><path d="M8 14h8v6H8z"></path></svg>
@@ -64,21 +65,28 @@
 
   <script>
     (() => {
-      const NAT = 1200;            // natural width of the graphic in px
-      const MIN = 40, MAX = 400, STEP = 10;
-      let z = 120;                 // start zoomed in
+      const NAT_W = 1200, NAT_H = 1105, ASPECT = NAT_W / NAT_H;
+      const MIN = 100, MAX = 400, STEP = 25;   // 100% == fit to page
+      let z = 100;
       const img = document.getElementById("img");
       const pct = document.getElementById("pct");
       const zin = document.getElementById("in");
       const zout = document.getElementById("out");
+      // width at which the whole graphic fits the current viewport (never wider than the page)
+      const fitWidth = () => {
+        const availW = window.innerWidth - 24;        // side gutters
+        const availH = window.innerHeight - 108;       // room for the control bar + padding
+        return Math.max(140, Math.min(NAT_W, availW, availH * ASPECT));
+      };
       const apply = () => {
-        img.style.width = Math.round(NAT * z / 100) + "px";
-        pct.textContent = z + "%";
+        img.style.width = Math.round(fitWidth() * z / 100) + "px";
+        pct.textContent = z === 100 ? "Fit" : z + "%";
         zin.disabled = z >= MAX;
         zout.disabled = z <= MIN;
       };
       zin.addEventListener("click", () => { z = Math.min(MAX, z + STEP); apply(); });
       zout.addEventListener("click", () => { z = Math.max(MIN, z - STEP); apply(); });
+      window.addEventListener("resize", apply);
       apply();
     })();
   </script>
